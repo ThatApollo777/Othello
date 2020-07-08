@@ -7,15 +7,15 @@ class EmptySpace {
         this.display = function() {
             rectMode(CENTER);
             fill(0, 255, 0);
-            rect(this.position.x, this.position.y, 50, 50);
+            rect(25 + this.position.x * 55 - 55, 25 + this.position.y * 55 - 55, 50, 50);
         }
         this.placePiece = function() {
-            if (mouseX - this.position.x < 25 && mouseX - this.position.x > -25 && mouseY - this.position.y < 25 && mouseY - this.position.y > -25 && this.empty) {
+            if (mouseX - (25 + this.position.x * 55 - 55) < 25 && mouseX - (25 + this.position.x * 55 - 55) > -25 && mouseY - (25 + this.position.y * 55 - 55) < 25 && mouseY - (25 + this.position.y * 55 - 55) > -25 && this.empty) {
                 for(loop2 = 0; loop2 < allPlayers.length; loop2++) {
                     if (allPlayers[loop2].turn === turn % allPlayers.length) {
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += 55;
+                            loop3.x += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -34,7 +34,7 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += -55;
+                            loop3.x += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -53,7 +53,7 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.y += 55;
+                            loop3.y += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -72,7 +72,7 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.y += -55;
+                            loop3.y += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -91,8 +91,8 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += 55;
-                            loop3.y += 55;
+                            loop3.x += 1;
+                            loop3.y += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -111,8 +111,8 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += 55;
-                            loop3.y += -55;
+                            loop3.x += 1;
+                            loop3.y += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -131,8 +131,8 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += -55;
-                            loop3.y += 55;
+                            loop3.x += -1;
+                            loop3.y += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -151,8 +151,8 @@ class EmptySpace {
                         switchingAllFalse();
                         condition1 = true;
                         for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
-                            loop3.x += -55;
-                            loop3.y += -55;
+                            loop3.x += -1;
+                            loop3.y += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                                 if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -218,7 +218,7 @@ function turnPossible() {
                 if (allPlayers[loop2].turn === turn % allPlayers.length) {
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += 55;
+                        loop3.x += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -237,7 +237,7 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += -55;
+                        loop3.x += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -256,7 +256,7 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.y += 55;
+                        loop3.y += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -275,7 +275,7 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.y += -55;
+                        loop3.y += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -294,8 +294,8 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += 55;
-                        loop3.y += 55;
+                        loop3.x += 1;
+                        loop3.y += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -314,8 +314,8 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += 55;
-                        loop3.y += -55;
+                        loop3.x += 1;
+                        loop3.y += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -334,8 +334,8 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += -55;
-                        loop3.y += 55;
+                        loop3.x += -1;
+                        loop3.y += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
@@ -354,8 +354,8 @@ function turnPossible() {
                     switchingAllFalse();
                     condition1 = true;
                     for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
-                        loop3.x += -55;
-                        loop3.y += -55;
+                        loop3.x += -1;
+                        loop3.y += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
                             if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {

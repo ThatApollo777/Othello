@@ -7,12 +7,12 @@ function setup() {
     boardY = 8;
     player1 = new Player(0, 0, 0, "Player 1");
     player2 = new Player(0, 0, 255, "Player 2");
-    basePieces = [new Piece(190, 190, player1), new Piece(190, 245, player2), new Piece(245, 190, player2), new Piece(245, 245, player1)];
+    basePieces = [new Piece(4, 4, player1), new Piece(4, 5, player2), new Piece(5, 4, player2), new Piece(5, 5, player1)];
     createCanvas(boardX * 55 - 5, boardY * 55 + 25 + allPlayers.length * 15);
     turn = 0;
     for (loop1 = 1; loop1 <= boardX; loop1 += 1) {
         for (loop2 = 1; loop2 <= boardY; loop2 += 1) {
-            new EmptySpace(25 + loop1 * 55 - 55, 25 + loop2 * 55 - 55);
+            new EmptySpace(loop1, loop2);
         }
     }
     gameState = "PLAY";

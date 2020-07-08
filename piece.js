@@ -10,7 +10,7 @@ class Piece {
         this.display = function() {
             fill(this.colour.r, this.colour.g, this.colour.b)
             ellipseMode(RADIUS);
-            ellipse(this.position.x, this.position.y, 25, 25);
+            ellipse(25 + this.position.x * 55 - 55, 25 + this.position.y * 55 - 55, 25, 25);
         }
         allPieces.push(this);
     }
