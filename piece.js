@@ -1,4 +1,4 @@
-var allPieces = [];
+let allPieces = [];
 
 class Piece {
     constructor(x, y, player) {
@@ -8,12 +8,9 @@ class Piece {
         this.switching = false;
         this.switch = false;
         this.display = function() {
-            push();
-            strokeWeight(0);
             fill(this.colour.r, this.colour.g, this.colour.b)
             ellipseMode(RADIUS);
             ellipse(this.position.x, this.position.y, 25, 25);
-            pop();
         }
         allPieces.push(this);
     }
