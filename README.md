@@ -9,6 +9,7 @@ About the game & how to play -
     2. In the begining 4 circular pieces are placed in a checkerboard style format at the centre.
     
     3. Each player chooses a colour and takes turn moving.
+    
     4. A player can move on any of the empty squares if moving there gives him/her 1 or more point(s).
     
     5. If there isn't a empty square on which moving is possible for the player the turn gets passed
