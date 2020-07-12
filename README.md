@@ -6,7 +6,7 @@ About the game & how to play -
     
     1. Othello is a board game played between 2 players on an 8 by 8 board using circular pieces.
     
-    2. In the begining 4 circular pieces are placed in a ceckerboard style format at the centre.
+    2. In the begining 4 circular pieces are placed in a checkerboard style format at the centre.
     
     3. Each player chooses a colour and takes turn moving.
     4. A player can move on any of the empty squares if moving there gives him/her 1 or more point(s).
