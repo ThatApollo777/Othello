@@ -25,14 +25,14 @@ function draw() {
     displayAllPieces();
     EmptyCheck();
     if (gameState === "PLAY") {
-        if (!turnPossible()) {
+        if (!turnPossible(turn)) {
             turn += 1;
         }
         turnTextAll(0, boardY * 55 + 10);
         for (loop1 = 0; loop1 < allPlayers.length; loop1 += 1) {
             allPlayers[loop1].printScore(0,  boardY * 55 + 25 + loop1 * 15);
         }
-        if (allEmptySpaces.length === allPieces.length) {
+        if (!anyTurnPossible()) {
             endGame();
         }
     } else if (gameState === "END") {
