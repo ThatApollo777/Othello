@@ -28,29 +28,21 @@ function draw() {
         if (!turnPossible()) {
             turn += 1;
         }
-        turnTextAll(0, 0 + boardY * 55 + 10);
+        turnTextAll(0, boardY * 55 + 10);
         for (loop1 = 0; loop1 < allPlayers.length; loop1 += 1) {
             allPlayers[loop1].printScore(0,  boardY * 55 + 25 + loop1 * 15);
         }
         if (allEmptySpaces.length === allPieces.length) {
-            gameState = "END";
-            winners.push(allPlayers[0]);
-            for (loop1 = 1; loop1 < allPlayers.length; loop1 += 1) {
-                if (allPlayers[loop1].getScore() === winners[0].getScore()) {
-                    winners.push(allPlayers[loop1]);
-                } else if (allPlayers[loop1].getScore() > winners[0].getScore()) {
-                    winners = [allPlayers[loop1]];
-                }
-            }
+            endGame();
         }
     } else if (gameState === "END") {
-        fill(80, 80, 80);
+        fill(0, 255, 0);
         text("Press R to restart", 0, boardY * 55 + 10);
         if (winners.length === 1) {
             fill(winners[0].colour.r, winners[0].colour.g, winners[0].colour.b);
             text("The WINNER is : " + winners[0].name, 0, boardY * 55 + 25);
         } else {
-            fill(80, 80, 80);
+            fill(0, 255, 0);
             text("TIE between :", 0, boardY * 55 + 25);
             for (loop1 = 0; loop1 < allPlayers.length; loop1 += 1) {
                 fill(winners[loop1].colour.r, winners[loop1].colour.g, winners[loop1].colour.b);
@@ -75,4 +67,16 @@ function reset() {
     revertToOrignal();
     allPieces = basePieces;
     winners = [];
+}
+
+function endGame() {
+    gameState = "END";
+    winners.push(allPlayers[0]);
+    for (loop1 = 1; loop1 < allPlayers.length; loop1 += 1) {
+        if (allPlayers[loop1].getScore() === winners[0].getScore()) {
+            winners.push(allPlayers[loop1]);
+        } else if (allPlayers[loop1].getScore() > winners[0].getScore()) {
+            winners = [allPlayers[loop1]];
+        }
+    }
 }

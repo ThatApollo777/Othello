@@ -3,7 +3,7 @@ let allPlayers = [], loop1, loop2, loop3, loop4, condition1;
 class Player {
     constructor(r, g, b, name) {
         this.name = name;
-        this.colour = new Colour(r, g, b);
+        this.colour = {'r' : r, 'g' : g, 'b' : b};
         this.turn = allPlayers.length;
         this.turnText = function(x, y) {
             if (turn % allPlayers.length === this.turn) {

@@ -2,7 +2,7 @@ let allPieces = [];
 
 class Piece {
     constructor(x, y, player) {
-        this.position = new Position(x, y);
+        this.position = {'x' : x, 'y' : y};
         this.orignalColour = player.colour;
         this.colour = player.colour;
         this.switching = false;
@@ -10,7 +10,7 @@ class Piece {
         this.display = function() {
             fill(this.colour.r, this.colour.g, this.colour.b)
             ellipseMode(RADIUS);
-            ellipse(25 + this.position.x * 55 - 55, 25 + this.position.y * 55 - 55, 25, 25);
+            ellipse(this.position.x * 55 - 30, this.position.y * 55 - 30, 25, 25);
         }
         allPieces.push(this);
     }

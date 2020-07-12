@@ -2,19 +2,19 @@ let allEmptySpaces = [];
 
 class EmptySpace {
     constructor(x ,y) {
-        this.position = new Position(x, y);
+        this.position = {'x' : x, 'y' : y};
         this.empty = true;
         this.display = function() {
             rectMode(CENTER);
             fill(0, 255, 0);
-            rect(25 + this.position.x * 55 - 55, 25 + this.position.y * 55 - 55, 50, 50);
+            rect(this.position.x * 55 - 30, this.position.y * 55 - 30, 50, 50);
         }
         this.placePiece = function() {
-            if (mouseX - (25 + this.position.x * 55 - 55) < 25 && mouseX - (25 + this.position.x * 55 - 55) > -25 && mouseY - (25 + this.position.y * 55 - 55) < 25 && mouseY - (25 + this.position.y * 55 - 55) > -25 && this.empty) {
+            if (mouseX - this.position.x * 55 + 30 < 25 && mouseX - this.position.x * 55 + 30 > -25 && mouseY - this.position.y * 55 + 30 < 25 && mouseY - this.position.y * 55 + 30 > -25 && this.empty) {
                 for(loop2 = 0; loop2 < allPlayers.length; loop2++) {
                     if (allPlayers[loop2].turn === turn % allPlayers.length) {
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -33,7 +33,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -52,7 +52,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.y += 1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -71,7 +71,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.y += -1;
                             condition1 = false;
                             for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -90,7 +90,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += 1;
                             loop3.y += 1;
                             condition1 = false;
@@ -110,7 +110,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += 1;
                             loop3.y += -1;
                             condition1 = false;
@@ -130,7 +130,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += -1;
                             loop3.y += 1;
                             condition1 = false;
@@ -150,7 +150,7 @@ class EmptySpace {
                         }
                         switchingAllFalse();
                         condition1 = true;
-                        for (loop3 = new Position(this.position.x, this.position.y); condition1;) {
+                        for (loop3 = {'x' : this.position.x, 'y' : this.position.y}; condition1;) {
                             loop3.x += -1;
                             loop3.y += -1;
                             condition1 = false;
@@ -217,7 +217,7 @@ function turnPossible() {
             for(loop2 = 0; loop2 < allPlayers.length; loop2++) {
                 if (allPlayers[loop2].turn === turn % allPlayers.length) {
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -236,7 +236,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -255,7 +255,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.y += 1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -274,7 +274,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.y += -1;
                         condition1 = false;
                         for (loop4 = 0; loop4 < allPieces.length; loop4++) {
@@ -293,7 +293,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += 1;
                         loop3.y += 1;
                         condition1 = false;
@@ -313,7 +313,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += 1;
                         loop3.y += -1;
                         condition1 = false;
@@ -333,7 +333,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += -1;
                         loop3.y += 1;
                         condition1 = false;
@@ -353,7 +353,7 @@ function turnPossible() {
                     }
                     switchingAllFalse();
                     condition1 = true;
-                    for (loop3 = new Position(allEmptySpaces[loop1].position.x, allEmptySpaces[loop1].position.y); condition1;) {
+                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
                         loop3.x += -1;
                         loop3.y += -1;
                         condition1 = false;
