@@ -1,4 +1,4 @@
-let allPlayers = [], loop1, loop2, loop3, loop4, loop5, condition1;
+let allPlayers = [], loop1, loop2, loop3, loop4, loop5, loop6, loop7, condition1;
 
 class Player {
     constructor(r, g, b, name) {
@@ -41,162 +41,32 @@ function turnPossible(turn) {
         if (allEmptySpaces[loop1].empty) {
             for(loop2 = 0; loop2 < allPlayers.length; loop2++) {
                 if (allPlayers[loop2].turn === turn % allPlayers.length) {
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += 1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
+                    for (loop6 = -1; loop6 <= 1; loop6 += 1) {
+                        for (loop7 = -1; loop7 <= 1; loop7 += 1) {
+                            if (loop7 != 0 || loop6 != 0) {
                                 condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
+                                for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
+                                    loop3.x += loop6;
+                                    loop3.y += loop7;
                                     condition1 = false;
+                                    for (loop4 = 0; loop4 < allPieces.length; loop4++) {
+                                        if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
+                                            if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
+                                                allPieces[loop4].switching = true;
+                                            }
+                                            condition1 = true;
+                                            if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
+                                                switchSwitch();
+                                                condition1 = false;
+                                            }
+                                            loop4 = allPieces.length;
+                                        }
+                                    }
                                 }
-                                loop4 = allPieces.length;
+                                switchingAllFalse();
                             }
                         }
                     }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += -1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.y += 1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.y += -1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += 1;
-                        loop3.y += 1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += 1;
-                        loop3.y += -1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += -1;
-                        loop3.y += 1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
-                    condition1 = true;
-                    for (loop3 = {'x' : allEmptySpaces[loop1].position.x, 'y' : allEmptySpaces[loop1].position.y}; condition1;) {
-                        loop3.x += -1;
-                        loop3.y += -1;
-                        condition1 = false;
-                        for (loop4 = 0; loop4 < allPieces.length; loop4++) {
-                            if (allPieces[loop4].position.x === loop3.x && allPieces[loop4].position.y === loop3.y) {
-                                if (allPlayers[loop2].colour.r != allPieces[loop4].colour.r || allPlayers[loop2].colour.g != allPieces[loop4].colour.g || allPlayers[loop2].colour.b != allPieces[loop4].colour.b) {
-                                    allPieces[loop4].switching = true;
-                                }
-                                condition1 = true;
-                                if (allPlayers[loop2].colour.r === allPieces[loop4].colour.r && allPlayers[loop2].colour.g === allPieces[loop4].colour.g && allPlayers[loop2].colour.b === allPieces[loop4].colour.b) {
-                                    switchSwitch();
-                                    condition1 = false;
-                                }
-                                loop4 = allPieces.length;
-                            }
-                        }
-                    }
-                    switchingAllFalse();
                     for (loop4 = 0; loop4 < allPieces.length; loop4 += 1) {
                         if (allPieces[loop4].switch) {
                             switchAllFalse();
