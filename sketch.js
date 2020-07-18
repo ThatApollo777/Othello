@@ -65,7 +65,10 @@ function mouseReleased() {
 function reset() {
     turn = 0;
     revertToOrignal();
-    allPieces = basePieces;
+    allPieces = [];
+    for (loop1 = 0; loop1 < basePieces.length; loop1 += 1) {
+        allPieces.push(basePieces[loop1]);
+    }
     winners = [];
 }
 
